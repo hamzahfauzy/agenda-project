@@ -16,6 +16,7 @@ const webserver = http.createServer(app)
 let subscribers = []
 
 const socketPath = process.env.SOCKET_PATH
+const socketIoPath = socketPath + process.env.SOCKET_IO_PATH
 
 webserver.listen(socketPort, () => {
     console.log('server started on port '+socketPort)
@@ -49,7 +50,7 @@ app.post(socketPath + '/broadcast', (req, res) => {
 })
 
 const io = new Server(webserver, {
-    path: socketPath,
+    path: socketIoPath,
     handlePreflightRequest: (req, res) => {
         const headers = {
             "Access-Control-Allow-Headers": "Content-Type, Authorization",
