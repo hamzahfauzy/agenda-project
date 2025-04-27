@@ -105,4 +105,5 @@ if($auth)
 }
 
 $socketUrl = env('SOCKET_URL', 'http://localhost:3001');
-Page::pushFoot('<script>window.SOCKET_URL = "'.$socketUrl.'";</script>');
+$socketPath = env('SOCKET_PATH', '');
+Page::pushFoot('<script>window.SOCKET_URL = "'.$socketUrl.'";window.SOCKET_PATH= "'.$socketPath.'";</script>');

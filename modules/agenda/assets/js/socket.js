@@ -1,7 +1,10 @@
 Notification.requestPermission().then(perm => {
     if(perm == 'granted')
     {
-        const socket = io(window.SOCKET_URL);
+        const socket = io(window.SOCKET_URL,{
+            path: window.SOCKET_PATH, 
+            transports: ['websocket']
+        });
         socket.on("connect", () => {
 
             const employee = window.employee
