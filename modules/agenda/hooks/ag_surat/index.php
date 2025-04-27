@@ -1,0 +1,33 @@
+<?php
+$user = auth();
+$having = "";
+
+if($filter)
+{
+    $filter_query = [];
+    foreach($filter as $f_key => $f_value)
+    {
+        $filter_query[] = "$f_key = '$f_value'";
+    }
+
+    $filter_query = implode(' AND ', $filter_query);
+
+    $having = (empty($having) ? 'HAVING ' : ' AND ') . $filter_query;
+}
+
+$where = $where ." ". $having;
+
+$this->db->query = "SELECT * FROM $this->table $where ";
+
+if(!in_array(get_role($user->id)->name, ['Admin','Super Admin']))
+{
+    $this->db->query = "SELECT $this->table.* FROM $this->table JOIN ag_surat_flow ON ag_surat_flow.surat_id = $this->table.id AND ag_surat_flow.user_id = $user->id $where ";
+}
+
+$total = $this->db->exec('exists');
+
+$this->db->query .= "ORDER BY ".$col_order." ".$order[0]['dir']." LIMIT $start,$length";
+$data  = $this->db->exec('all');
+
+
+return compact('data','total');
