@@ -15,6 +15,8 @@ const webserver = http.createServer(app)
 
 let subscribers = []
 
+const socketPath = process.env.SOCKET_PATH
+
 webserver.listen(socketPort, () => {
     console.log('server started on port '+socketPort)
 })
@@ -30,11 +32,11 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => {
+app.get(socketPath + '/', (req, res) => {
     res.send('Hello World')
 })
 
-app.post('/broadcast', (req, res) => {
+app.post(socketPath + '/broadcast', (req, res) => {
     const body = req.body
     const target = body.target ? body.target : null
     const message = body.message
@@ -47,7 +49,7 @@ app.post('/broadcast', (req, res) => {
 })
 
 const io = new Server(webserver, {
-    path: process.env.SOCKET_PATH,
+    path: socketPath,
     handlePreflightRequest: (req, res) => {
         const headers = {
             "Access-Control-Allow-Headers": "Content-Type, Authorization",
