@@ -1,8 +1,11 @@
 import http from 'http'
 import express from 'express'
 import bodyParser from 'body-parser'
+import dotenv from 'dotenv'
 
 import { Server } from 'socket.io'
+
+dotenv.config({path: '../../.env'})
 
 const socketPort = 3001
 
@@ -44,6 +47,7 @@ app.post('/broadcast', (req, res) => {
 })
 
 const io = new Server(webserver, {
+    path: process.env.SOCKET_PATH,
     handlePreflightRequest: (req, res) => {
         const headers = {
             "Access-Control-Allow-Headers": "Content-Type, Authorization",

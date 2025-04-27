@@ -78,7 +78,8 @@ function forwardFlow($surat)
                 'url' => routeTo('agenda/surat/view', ['id' => $surat->id])
             ];
 
-            simple_curl(env('SOCKET_URL', 'http://localhost:3000') . '/broadcast', 'POST', http_build_query($dt), [
+            $socketUrl = env('SOCKET_URL', 'http://localhost:3000') . env('SOCKET_PATH', '');
+            simple_curl($socketUrl . '/broadcast', 'POST', http_build_query($dt), [
                 'content-type: application/x-www-form-urlencoded'
             ]);
         }

@@ -25,7 +25,8 @@ $dt = [
     'url' => routeTo('crud/index', ['table' => 'ag_kegiatan', 'filter' => ['id' => $kegiatan->id]])
 ];
 
-simple_curl(env('SOCKET_URL', 'http://localhost:3000') . '/broadcast', 'POST', http_build_query($dt), [
+$socketUrl = env('SOCKET_URL', 'http://localhost:3000') . env('SOCKET_PATH', '');
+simple_curl($socketUrl . '/broadcast', 'POST', http_build_query($dt), [
     'content-type: application/x-www-form-urlencoded'
 ]);
 
@@ -42,7 +43,7 @@ foreach($_POST['pendamping'] as $pendamping)
     {
         $dt['target'] = $pejabat_pendamping->user_id;
         
-        simple_curl(env('SOCKET_URL', 'http://localhost:3000') . '/broadcast', 'POST', http_build_query($dt), [
+        simple_curl($socketUrl . '/broadcast', 'POST', http_build_query($dt), [
             'content-type: application/x-www-form-urlencoded'
         ]);
     }
