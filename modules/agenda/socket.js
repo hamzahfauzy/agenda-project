@@ -33,11 +33,11 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/', (req, res) => {
+app.get(socketPath + '/', (req, res) => {
     res.send('Hello World')
 })
 
-app.post('/broadcast', (req, res) => {
+app.post(socketPath + '/broadcast', (req, res) => {
     const body = req.body
     const target = body.target ? body.target : null
     const message = body.message
