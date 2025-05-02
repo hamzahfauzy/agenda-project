@@ -9,7 +9,6 @@ CREATE TABLE ag_catatan_surat (
     updated_by INT DEFAULT NULL,
 
     CONSTRAINT fk_ag_catatan_surat_surat_id FOREIGN KEY (surat_id) REFERENCES ag_surat(id) ON DELETE RESTRICT,
-    CONSTRAINT fk_ag_catatan_surat_user_id FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE RESTRICT,
     CONSTRAINT fk_ag_catatan_surat_created_by FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE RESTRICT,
     CONSTRAINT fk_ag_catatan_surat_updated_by FOREIGN KEY (updated_by) REFERENCES users(id) ON DELETE RESTRICT
 );
