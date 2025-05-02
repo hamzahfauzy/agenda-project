@@ -5,21 +5,54 @@ use Core\Page;
 
 function getFlow()
 {
-    return ['Asisten','Sekda','Bupati'];
+    return ['Kabag Umum','Asisten','Sekda','Wakil Bupati','Bupati'];
 }
 
 function getNextFlow($current)
 {
     $flow = getFlow();
     $index = array_search($current, $flow);
-    if(end($flow) ==  $index) return false;
+    if(count($flow)-1 ==  $index) return false;
 
     return $flow[$index+1];
 }
 
-function forwardFlow($surat)
+function forwardFlow($surat, $userIds = [])
 {
-    // get surat flow
+    $db = new Database;
+    $userIds = empty($userIds) ? forwardReceivers($surat) : $userIds;
+
+    foreach($userIds as $user)
+    {
+        $db->insert('ag_surat_flow', [
+            'surat_id' => $surat->id,
+            'user_id' => $user->user_id,
+            'created_by' => auth()->id,
+            'logs' => json_encode([
+                [
+                    'status' => 'Diteruskan',
+                    'jabatan' => $user->jabatan,
+                    'nama_pejabat' => $user->nama,
+                    'created_at' => date('Y-m-d H:i:s')
+                ]
+            ])
+        ]);
+
+        $dt = [
+            'target' => $user->user_id,
+            'message' => 'Ada surat masuk perihal ' . $surat->perihal . ' yang harus anda baca.',
+            'url' => routeTo('agenda/surat/view', ['id' => $surat->id])
+        ];
+
+        $socketUrl = env('SOCKET_URL', 'http://localhost:3000') . env('SOCKET_PATH', '');
+        simple_curl($socketUrl . '/broadcast', 'POST', http_build_query($dt), [
+            'content-type: application/x-www-form-urlencoded'
+        ]);
+    }
+}
+
+function forwardReceivers($surat)
+{
     $db = new Database;
     $db->query = "SELECT 
                     ag_surat_flow.* FROM ag_surat_flow 
@@ -52,39 +85,13 @@ function forwardFlow($surat)
 
     if($flow)
     {
-        // get users when role in flow
+        $db = new Database;
         $db->query = "SELECT user_roles.user_id, ag_pejabat.jabatan, ag_pejabat.nama FROM roles LEFT JOIN user_roles ON user_roles.role_id = roles.id LEFT JOIN ag_pejabat ON ag_pejabat.user_id = user_roles.user_id WHERE roles.name = '$flow'";
-        $userIds = $db->exec('all');
-    
-        foreach($userIds as $user)
-        {
-            $db->insert('ag_surat_flow', [
-                'surat_id' => $surat->id,
-                'user_id' => $user->user_id,
-                'created_by' => auth()->id,
-                'logs' => json_encode([
-                    [
-                        'status' => 'Diteruskan',
-                        'jabatan' => $user->jabatan,
-                        'nama_pejabat' => $user->nama,
-                        'created_at' => date('Y-m-d H:i:s')
-                    ]
-                ])
-            ]);
-
-            $dt = [
-                'target' => $user->user_id,
-                'message' => 'Ada surat masuk perihal ' . $surat->perihal . ' yang harus anda baca.',
-                'url' => routeTo('agenda/surat/view', ['id' => $surat->id])
-            ];
-
-            $socketUrl = env('SOCKET_URL', 'http://localhost:3000') . env('SOCKET_PATH', '');
-            simple_curl($socketUrl . '/broadcast', 'POST', http_build_query($dt), [
-                'content-type: application/x-www-form-urlencoded'
-            ]);
-        }
+        return $db->exec('all');
     }
-    
+
+    return [];
+
 }
 
 $auth = auth();

@@ -15,11 +15,16 @@ if($filter)
     $having = (empty($having) ? 'HAVING ' : ' AND ') . $filter_query;
 }
 
+if(hasRole($user->id, 'Ajudan'))
+{
+    $where = (empty($where) ? 'WHERE ' : $where . ' AND ') . ' ag_surat.created_by = '.$user->id.' ';
+}
+
 $where = $where ." ". $having;
 
 $this->db->query = "SELECT * FROM $this->table $where ";
 
-if(!in_array(get_role($user->id)->name, ['Admin','Super Admin']))
+if(!in_array(get_role($user->id)->name, ['Admin','Super Admin']) && !hasRole($user->id, 'Ajudan'))
 {
     $this->db->query = "SELECT $this->table.* FROM $this->table JOIN ag_surat_flow ON ag_surat_flow.surat_id = $this->table.id AND ag_surat_flow.user_id = $user->id $where ";
 }

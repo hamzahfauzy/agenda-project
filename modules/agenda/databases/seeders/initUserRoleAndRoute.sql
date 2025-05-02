@@ -1,4 +1,4 @@
-INSERT INTO roles(name) VALUES ('Admin'),('User'),('Asisten'),('Sekda'),('Bupati');
+INSERT INTO roles(name) VALUES ('Admin'),('User'),('Kabag Umum'),('Ajudan'),('Asisten'),('Sekda'),('Wakil Bupati'),('Bupati');
 
 INSERT INTO role_routes(`route_path`, `role_id`) VALUES 
             ('!default/settings/*', (SELECT id FROM roles WHERE name = 'Admin')),
@@ -6,6 +6,11 @@ INSERT INTO role_routes(`route_path`, `role_id`) VALUES
             ('crud/*?table=ag_surat', (SELECT id FROM roles WHERE name = 'Admin')),
             ('crud/*?table=ag_pejabat', (SELECT id FROM roles WHERE name = 'Admin')),
             ('crud/*?table=ag_kegiatan', (SELECT id FROM roles WHERE name = 'Admin')),
+            ('crud/*?table=ag_surat', (SELECT id FROM roles WHERE name = 'Ajudan')),
+            ('crud/index?table=ag_kegiatan', (SELECT id FROM roles WHERE name = 'Ajudan')),
+            ('crud/index?table=ag_surat', (SELECT id FROM roles WHERE name = 'Kabag Umum')),
+            ('agenda/surat/view', (SELECT id FROM roles WHERE name = 'Kabag Umum')),
+            ('agenda/surat/forward', (SELECT id FROM roles WHERE name = 'Kabag Umum')),
             ('crud/index?table=ag_surat', (SELECT id FROM roles WHERE name = 'Asisten')),
             ('agenda/surat/view', (SELECT id FROM roles WHERE name = 'Asisten')),
             ('agenda/surat/forward', (SELECT id FROM roles WHERE name = 'Asisten')),
@@ -13,9 +18,14 @@ INSERT INTO role_routes(`route_path`, `role_id`) VALUES
             ('agenda/surat/view', (SELECT id FROM roles WHERE name = 'Sekda')),
             ('agenda/surat/forward', (SELECT id FROM roles WHERE name = 'Sekda')),
             ('agenda/surat/disposisi', (SELECT id FROM roles WHERE name = 'Sekda')),
+            ('crud/index?table=ag_surat', (SELECT id FROM roles WHERE name = 'Wakil Bupati')),
+            ('agenda/surat/view', (SELECT id FROM roles WHERE name = 'Wakil Bupati')),
+            ('agenda/surat/forward', (SELECT id FROM roles WHERE name = 'Wakil Bupati')),
+            ('agenda/surat/disposisi', (SELECT id FROM roles WHERE name = 'Wakil Bupati')),
             ('crud/index?table=ag_surat', (SELECT id FROM roles WHERE name = 'Bupati')),
             ('agenda/surat/view', (SELECT id FROM roles WHERE name = 'Bupati')),
             ('agenda/surat/disposisi', (SELECT id FROM roles WHERE name = 'Bupati')),
+            ('agenda/surat/attend', (SELECT id FROM roles WHERE name = 'Bupati')),
             ('!default/settings/*', (SELECT id FROM roles WHERE name = 'User')),
             ('default/*', (SELECT id FROM roles WHERE name = 'User')),
             ('crud/index?table=ag_kegiatan', (SELECT id FROM roles WHERE name = 'User'));

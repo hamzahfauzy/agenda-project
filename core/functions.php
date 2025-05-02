@@ -675,3 +675,11 @@ function curl_get_contents($url)
   curl_close($ch);
   return $data;
 }
+
+function hasRole($user_id, $role)
+{
+    $roles = get_roles($user_id);
+    $roles = $roles ? array_values(array_column($roles, 'name')) : [];
+
+    return in_array($role, $roles);
+}

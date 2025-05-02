@@ -13,6 +13,10 @@ return [
         'label' => 'Lokasi',
         'type' => 'text',
     ],
+    'deskripsi' => [
+        'label' => 'Instruksi',
+        'type' => 'text',
+    ],
     'pejabat_id' => [
         'label' => 'Disposisi',
         'type' => 'options-obj:ag_pejabat,id,jabatan',

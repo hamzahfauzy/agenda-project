@@ -1,0 +1,1 @@
+ALTER TABLE ag_kegiatan ADD COLUMN deskripsi TEXT DEFAULT NULL;
