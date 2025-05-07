@@ -22,7 +22,10 @@ table td img {
         <table class="table">
             <tr>
                 <td rowspan="2" width="250px">
-                    <img src="<?=asset('assets/default/img/user-default.png')?>" alt="" width="250px">
+                    <center>
+                    <img src="<?=asset(auth()->profile->pic ?? 'assets/default/img/user-default.png')?>" alt="" width="250px">
+                    <a href="javascript:void(0)" class="btn btn-info w-100" data-bs-toggle="modal" data-bs-target="#editFotoModal">Update Foto</a>
+                    </center>
                 </td>
                 <td>
                     <table class="table table-bordered">
@@ -118,6 +121,29 @@ table td img {
             <div class="form-group mb-3">
                 <label for="" class="mb-2">Password Baru</label>
                 <input type="password" name="password" id="" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editFotoModal" tabindex="-1" role="dialog" aria-labelledby="editFotoForm" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editFotoForm">Edit Foto</h5>
+      </div>
+      <div class="modal-body">
+        <form action="<?=routeTo('default/update-foto')?>" method="post" enctype="multipart/form-data">
+            <?= csrf_field() ?>
+            <div class="form-group mb-3">
+                <label for="" class="mb-2">Foto</label>
+                <input type="file" name="foto" id="" class="form-control" required>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary">Submit</button>

@@ -5,6 +5,10 @@ return [
         'label' => 'Nomor Surat',
         'type' => 'text'
     ],
+    'tanggal_surat' => [
+        'label' => 'Tanggal Surat',
+        'type' => 'date'
+    ],
     'perihal' => [
         'label' => 'Perihal',
         'type' => 'text'

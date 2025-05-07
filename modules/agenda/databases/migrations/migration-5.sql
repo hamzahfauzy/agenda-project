@@ -1,0 +1,1 @@
+ALTER TABLE ag_surat ADD COLUMN tanggal_surat DATE DEFAULT NULL;
