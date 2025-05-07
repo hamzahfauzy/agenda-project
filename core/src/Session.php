@@ -18,6 +18,10 @@ class Session
                     'id' => $_SESSION['user_id']
                 ]);
 
+                $user->profile = $db->single('profile', [
+                    'user_id' => $user->id
+                ]);
+
                 return $user;
             }
             return;
