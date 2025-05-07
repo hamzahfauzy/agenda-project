@@ -10,11 +10,21 @@ if(Request::isMethod('POST'))
     $file = Media::singleUpload($_FILES['foto']);
     
     $db = new Database;
-    $db->update('profile', [
-        'pic' => $file->name
-    ], [
-        'user_id' => $file->created_by
-    ]);
+    if(auth()->profile)
+    {
+        $db->update('profile', [
+            'pic' => $file->name
+        ], [
+            'user_id' => $file->created_by
+        ]);
+    }
+    else
+    {
+        $db->insert('profile', [
+            'pic' => $file->name,
+            'user_id' => $file->created_by
+        ]);
+    }
 
     set_flash_msg(['success'=>"Foto berhasil di update"]);
 
