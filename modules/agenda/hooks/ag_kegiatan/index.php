@@ -28,6 +28,7 @@ $this->db->query = "SELECT
                 $this->table.nama,
                 $this->table.tanggal,
                 $this->table.lokasi,
+                $this->table.deskripsi,
                 $this->table.pejabat_id,
                 GROUP_CONCAT(pejabat.jabatan SEPARATOR ', ') AS pendamping,
                 $this->table.created_at,
