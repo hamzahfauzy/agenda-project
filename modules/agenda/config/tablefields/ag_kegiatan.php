@@ -2,7 +2,7 @@
 
 return [
     'nama' => [
-        'label' => 'Nama',
+        'label' => 'Nama Kegiatan',
         'type' => 'text',
     ],
     'tanggal' => [
@@ -10,7 +10,7 @@ return [
         'type' => 'datetime-local',
     ],
     'lokasi' => [
-        'label' => 'Lokasi',
+        'label' => 'Lokasi Kegiatan',
         'type' => 'text',
     ],
     'deskripsi' => [
