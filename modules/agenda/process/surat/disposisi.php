@@ -13,6 +13,16 @@ $data['created_by'] = auth()->id;
 unset($data['_token']);
 unset($data['pendamping']);
 
+if(hasRole(auth()->id, 'Ajudan'))
+{
+    $db->query = "SELECT user_id FROM user_roles WHERE role_id = (SELECT id FROM roles WHERE name = 'Bupati')";
+    $user = $db->exec('single');
+    if($user)
+    {
+        $data['created_by'] = $user->user_id;
+    }
+}
+
 $kegiatan = $db->insert('ag_kegiatan', $data);
 
 $pejabat = $db->single('ag_pejabat', [
@@ -51,7 +61,7 @@ foreach($_POST['pendamping'] as $pendamping)
 
 $flow = $db->single('ag_surat_flow', [
     'surat_id' => $_GET['id'],
-    'user_id' => auth()->id,
+    'user_id' => $data['created_by'],
 ]);
 
 $logs = json_decode($flow->logs);
@@ -64,7 +74,7 @@ $logs[] = [
 
 $db->update('ag_surat_flow', [
     'logs' => json_encode($logs),
-    'updated_by' => auth()->id,
+    'updated_by' => $data['created_by'],
 ], [
     'id' => $flow->id
 ]);
