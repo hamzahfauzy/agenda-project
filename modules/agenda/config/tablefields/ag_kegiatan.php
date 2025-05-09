@@ -6,15 +6,19 @@ return [
         'type' => 'text',
     ],
     'tanggal' => [
-        'label' => 'Tanggal',
+        'label' => 'Tanggal dan Waktu Kegiatan',
         'type' => 'datetime-local',
     ],
     'lokasi' => [
         'label' => 'Lokasi Kegiatan',
         'type' => 'text',
     ],
+    'instruksi' => [
+        'label' => 'Instruksi Disposisi',
+        'type' => 'checkbox:Pelajari/Kaji|Ingatkan|Telaah|Selesaikan|Wakili/Hadiri|Koordinasikan|Untuk Dilaksanakan|Untuk Ditindaklanjuti',
+    ],
     'deskripsi' => [
-        'label' => 'Instruksi',
+        'label' => 'Instruksi Tambahan',
         'type' => 'text',
     ],
     'pejabat_id' => [
