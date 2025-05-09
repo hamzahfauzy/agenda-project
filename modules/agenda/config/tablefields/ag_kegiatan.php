@@ -22,11 +22,11 @@ return [
         'type' => 'text',
     ],
     'pejabat_id' => [
-        'label' => 'Disposisi',
+        'label' => 'Tujuan Disposisi',
         'type' => 'options-obj:ag_pejabat,id,jabatan',
     ],
     'pendamping' => [
-        'label' => 'Pejabat Pendamping',
+        'label' => 'Pejabat Pendamping Kegiatan',
         'type' => 'options-obj:ag_pejabat,id,jabatan',
         'attr' => [
             'multiple' => 'multiple'
