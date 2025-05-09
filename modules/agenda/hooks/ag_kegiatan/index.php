@@ -23,7 +23,7 @@ if($filter)
     $having = (empty($having) ? 'HAVING ' : ' AND ') . $filter_query;
 }
 
-$this->db->query = "SELECT 
+$query = "SELECT 
                 $this->table.id,
                 $this->table.nama,
                 $this->table.tanggal,
@@ -42,9 +42,15 @@ $this->db->query = "SELECT
             $where
             GROUP BY $this->table.id 
             $having ";
+
+$this->db->query = $query;
 $total = $this->db->exec('exists');
 
-$this->db->query .= "ORDER BY ".$col_order." ".$order[0]['dir']." LIMIT $start,$length";
+$this->db->query = $query . " ORDER BY CASE 
+    WHEN tanggal >= CURDATE() THEN 0
+    ELSE 1
+  END,
+  ABS(DATEDIFF($this->table.tanggal, CURDATE())) LIMIT $start,$length";
 $data  = $this->db->exec('all');
 
 
