@@ -15,7 +15,7 @@ return [
     ],
     'instruksi' => [
         'label' => 'Instruksi Disposisi',
-        'type' => 'checkbox:Pelajari/Kaji|Ingatkan|Telaah|Selesaikan|Wakili/Hadiri|Koordinasikan|Untuk Dilaksanakan|Untuk Ditindaklanjuti',
+        'type' => 'checkbox:Dihadiri Bupati|Dihadiri Wakil Bupati|Dihadiri Sekdakab|Wakilkan/Hadiri|Untuk ditindaklanjuti|Untuk.dilaksanakan',
     ],
     'deskripsi' => [
         'label' => 'Instruksi Tambahan',
@@ -26,7 +26,7 @@ return [
         'type' => 'options-obj:ag_pejabat,id,jabatan',
     ],
     'pendamping' => [
-        'label' => 'Pejabat Pendamping Kegiatan',
+        'label' => 'Pejabat Pendamping Kegiatan',
         'type' => 'options-obj:ag_pejabat,id,jabatan',
         'attr' => [
             'multiple' => 'multiple'

@@ -149,16 +149,20 @@
                     <?= \Core\Form::input('options-obj:ag_pejabat,id,jabatan', 'pendamping[]', ['class' => 'form-control select2insidemodal', 'placeholder' => 'Pilih Pejabat Pendamping', 'multiple' => 'nultiple']) ?>
                 </div>
                 <div class="form-group mb-3">
-                    <label class="mb-2 w-100">Lokasi</label>
+                    <label class="mb-2 w-100">Lokasi Kegiatan</label>
                     <input type="text" name="lokasi" class="form-control">
                 </div>
                 <div class="form-group mb-3">
-                    <label class="mb-2 w-100">Tanggal</label>
+                    <label class="mb-2 w-100">Tanggal dan Waktu Kegiatan</label>
                     <input type="datetime-local" name="tanggal" class="form-control">
                 </div>
                 <div class="form-group mb-3">
-                    <label class="mb-2 w-100">Instruksi</label>
-                    <textarea name="instruksi" id="" class="form-control"></textarea>
+                    <label class="mb-2 w-100">Instruksi Disposisi</label>
+                    <?= \Core\Form::input('checkbox:Dihadiri Bupati|Dihadiri Wakil Bupati|Dihadiri Sekdakab|Wakilkan/Hadiri|Untuk ditindaklanjuti|Untuk.dilaksanakan', 'instruksi', ['class' => 'form-control select2insidemodal']) ?>
+                </div>
+                <div class="form-group mb-3">
+                    <label class="mb-2 w-100">Instruksi Tambahan</label>
+                    <textarea name="deskripsi" id="" class="form-control"></textarea>
                 </div>
             </div>
             <div class="modal-footer">

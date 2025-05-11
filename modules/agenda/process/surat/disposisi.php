@@ -10,6 +10,7 @@ $surat = $db->single('ag_surat', [
 $data = $_POST;
 $data['nama'] = $surat->perihal;
 $data['created_by'] = auth()->id;
+$data['instruksi'] = !empty($data['instruksi']) ? implode(',',$data['instruksi']) : '';
 unset($data['_token']);
 unset($data['pendamping']);
 

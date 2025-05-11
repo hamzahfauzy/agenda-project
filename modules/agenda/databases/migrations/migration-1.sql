@@ -19,7 +19,7 @@ CREATE TABLE ag_kegiatan (
     nama VARCHAR(200) NOT NULL,
     tanggal DATETIME NOT NULL,
     lokasi TEXT NOT NULL,
-    pejabat_id INT NOT NULL,
+    pejabat_id INT DEFAULT NULL,
     
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
