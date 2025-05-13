@@ -46,19 +46,19 @@
                 <div class="alert alert-danger"><?= $error_msg ?></div>
                 <?php endif ?>
                 <div class="form-group">
-                    <label for="">Nomor Surat</label>
+                    <label for="" class="fw-bold">Nomor Surat</label>
                     <p><?= $data->no_surat?></p>
                 </div>
                 <div class="form-group">
-                    <label for="">Perihal</label>
+                    <label for="" class="fw-bold">Perihal</label>
                     <p><?= $data->perihal?></p>
                 </div>
                 <div class="form-group">
-                    <label for="">Asal Surat</label>
+                    <label for="" class="fw-bold">Asal Surat</label>
                     <p><?= $data->asal?></p>
                 </div>
                 <div class="form-group">
-                    <label for="">Tujuan Surat</label>
+                    <label for="" class="fw-bold">Tujuan Surat</label>
                     <p><?= $data->tujuan?></p>
                 </div>
             </div>
