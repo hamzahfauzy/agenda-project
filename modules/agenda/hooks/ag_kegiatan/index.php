@@ -32,7 +32,7 @@ $query = "SELECT
                 $this->table.instruksi,
                 $this->table.pejabat_id,
                 GROUP_CONCAT(pejabat.jabatan SEPARATOR ', ') AS pendamping,
-                GROUP_CONCAT(pelaksanan.jabatan SEPARATOR ', ') AS pelaksana,
+                GROUP_CONCAT(pelaksana.jabatan SEPARATOR ', ') AS pelaksana,
                 $this->table.created_at,
                 $this->table.updated_at,
                 $this->table.created_by,
