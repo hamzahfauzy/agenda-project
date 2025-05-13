@@ -59,7 +59,7 @@
 ]; 
 foreach($js as $script )
 {
-	echo "<script src=''></script>";
+	echo "<script src='$script'></script>";
 }
 ?>
 
