@@ -21,7 +21,7 @@ return [
         'label' => 'Instruksi Tambahan',
         'type' => 'text',
     ],
-    'pelaksanan' => [
+    'pelaksana' => [
         'label' => 'Pejabat Pelaksana',
         'type' => 'text',
     ],
