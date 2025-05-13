@@ -49,7 +49,7 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <!-- Datatables -->
-<script src="<?= asset('theme/assets/js/datatables/datatables.min.js') ?>"></script>
+<script src="https://cdn.datatables.net/2.3.0/js/dataTables.js"></script>
 <script src="https://cdn.datatables.net/responsive/3.0.4/js/dataTables.responsive.js"></script>
 <script src="https://cdn.datatables.net/responsive/3.0.4/js/responsive.dataTables.js"></script>
 <script src="<?= asset('theme/assets/js/datatables/datatables.bootstrap5.min.js') ?>"></script>
