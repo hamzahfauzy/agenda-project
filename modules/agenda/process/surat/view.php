@@ -33,6 +33,14 @@ $data->take_action = $db->exists('ag_surat_flow', [
     'surat_id' => $id,
 ]);
 
+if(hasRole(auth()->id, 'Ajudan'))
+{
+    $data->take_action = $db->exists('ag_kegiatan', [
+        'surat_id' => $data->id,
+        'instruksi' => ['IS', NULL]
+    ]);
+}
+
 $surat = $db->single('ag_surat', ['id' => $id]);
 $receivers = forwardReceivers($surat);
 
