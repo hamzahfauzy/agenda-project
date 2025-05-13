@@ -4,7 +4,7 @@ table td img {
     max-width:150px;
 }
 table.table td, table.table th {
-    white-space:nowrap;
+    white-space:pre-wrap;
 }
 </style>
 <div class="card">
