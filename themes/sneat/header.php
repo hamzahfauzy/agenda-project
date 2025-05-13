@@ -11,9 +11,7 @@
     <!-- App favicon -->
     <link rel="icon" type="image/x-icon" href="<?= getFavicon() ?>">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/2.3.0/css/dataTables.bootstrap5.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/responsive/3.0.4/css/responsive.bootstrap5.css" rel="stylesheet">
+    <link href="<?= asset('theme/assets/css/dataTables.bootstrap5.min.css') ?>" rel="stylesheet">
 
 
     <!-- Fonts -->
