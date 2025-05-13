@@ -1,0 +1,1 @@
+ALTER TABLE ag_pendamping_kegiatan ADD COLUMN record_type VARCHAR(100) DEFAULT 'PENDAMPING';

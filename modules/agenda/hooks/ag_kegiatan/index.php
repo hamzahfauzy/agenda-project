@@ -32,13 +32,15 @@ $query = "SELECT
                 $this->table.instruksi,
                 $this->table.pejabat_id,
                 GROUP_CONCAT(pejabat.jabatan SEPARATOR ', ') AS pendamping,
+                GROUP_CONCAT(pelaksanan.jabatan SEPARATOR ', ') AS pelaksana,
                 $this->table.created_at,
                 $this->table.updated_at,
                 $this->table.created_by,
                 $this->table.updated_by
             FROM $this->table 
             LEFT JOIN ag_pendamping_kegiatan ON ag_pendamping_kegiatan.kegiatan_id = $this->table.id 
-            LEFT JOIN ag_pejabat pejabat ON ag_pendamping_kegiatan.pejabat_id = pejabat.id 
+            LEFT JOIN ag_pejabat pejabat ON ag_pendamping_kegiatan.pejabat_id = pejabat.id AND ag_pendamping_kegiatan.record_type = 'PENDAMPING'
+            LEFT JOIN ag_pejabat pelaksana ON ag_pendamping_kegiatan.pejabat_id = pejabat.id  AND ag_pendamping_kegiatan.record_type = 'PELAKSANA'
             $where
             GROUP BY $this->table.id 
             $having ";

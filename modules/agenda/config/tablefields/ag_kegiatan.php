@@ -21,9 +21,9 @@ return [
         'label' => 'Instruksi Tambahan',
         'type' => 'text',
     ],
-    'pejabat_id' => [
-        'label' => 'Tujuan Disposisi',
-        'type' => 'options-obj:ag_pejabat,id,jabatan',
+    'pelaksanan' => [
+        'label' => 'Pejabat Pelaksana',
+        'type' => 'text',
     ],
     'pendamping' => [
         'label' => 'Pejabat Pendamping Kegiatan',

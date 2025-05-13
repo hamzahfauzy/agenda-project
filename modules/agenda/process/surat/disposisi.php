@@ -12,6 +12,7 @@ $data['nama'] = $surat->perihal;
 $data['created_by'] = auth()->id;
 $data['instruksi'] = !empty($data['instruksi']) ? implode(',',$data['instruksi']) : '';
 unset($data['_token']);
+unset($data['pejabat']);
 unset($data['pendamping']);
 
 if(hasRole(auth()->id, 'Ajudan'))
@@ -26,20 +27,52 @@ if(hasRole(auth()->id, 'Ajudan'))
 
 $kegiatan = $db->insert('ag_kegiatan', $data);
 
-$pejabat = $db->single('ag_pejabat', [
-    'id' => $kegiatan->pejabat_id
+$flow = $db->single('ag_surat_flow', [
+    'surat_id' => $_GET['id'],
+    'user_id' => $data['created_by'],
 ]);
 
-$dt = [
-    'target' => $pejabat->user_id,
-    'message' => 'Ada kegiatan baru yang harus anda hadiri',
-    'url' => routeTo('crud/index', ['table' => 'ag_kegiatan', 'filter' => ['id' => $kegiatan->id]])
-];
+$logs = json_decode($flow->logs);
 
-$socketUrl = env('SOCKET_URL', 'http://localhost:3000') . env('SOCKET_PATH', '');
-simple_curl($socketUrl . '/broadcast', 'POST', http_build_query($dt), [
-    'content-type: application/x-www-form-urlencoded'
+foreach($_POST['pejabat'] as $pejabat)
+{
+    $pejabat = $db->single('ag_pejabat', [
+        'id' => $pejabat
+    ]);
+
+    $db->insert('ag_pendamping_kegiatan', [
+        'kegiatan_id' => $kegiatan->id,
+        'pejabat_id' => $pejabat->id,
+        'record_type' => 'PELAKSANA'
+    ]);
+    
+    $dt = [
+        'target' => $pejabat->user_id,
+        'message' => 'Ada kegiatan baru yang harus anda hadiri',
+        'url' => routeTo('crud/index', ['table' => 'ag_kegiatan', 'filter' => ['id' => $kegiatan->id]])
+    ];
+    
+    $socketUrl = env('SOCKET_URL', 'http://localhost:3000') . env('SOCKET_PATH', '');
+    simple_curl($socketUrl . '/broadcast', 'POST', http_build_query($dt), [
+        'content-type: application/x-www-form-urlencoded'
+    ]);
+
+    $logs[] = [
+        'status' => 'Disposisi',
+        'jabatan' => $pejabat->jabatan,
+        'nama_pejabat' => $pejabat->nama,
+        'created_at' => date('Y-m-d H:i:s')
+    ];
+    
+}
+
+$db->update('ag_surat_flow', [
+    'logs' => json_encode($logs),
+    'updated_by' => $data['created_by'],
+], [
+    'id' => $flow->id
 ]);
+
 
 foreach($_POST['pendamping'] as $pendamping)
 {
@@ -59,26 +92,6 @@ foreach($_POST['pendamping'] as $pendamping)
         ]);
     }
 }
-
-$flow = $db->single('ag_surat_flow', [
-    'surat_id' => $_GET['id'],
-    'user_id' => $data['created_by'],
-]);
-
-$logs = json_decode($flow->logs);
-$logs[] = [
-    'status' => 'Disposisi',
-    'jabatan' => $pejabat->jabatan,
-    'nama_pejabat' => $pejabat->nama,
-    'created_at' => date('Y-m-d H:i:s')
-];
-
-$db->update('ag_surat_flow', [
-    'logs' => json_encode($logs),
-    'updated_by' => $data['created_by'],
-], [
-    'id' => $flow->id
-]);
 
 set_flash_msg(['success'=>"Surat berhasil di disposisikan"]);
 

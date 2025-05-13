@@ -20,11 +20,12 @@
                         </button>
                         <?php endif ?>
                         
+                        <?php /*
                         <?php if(is_allowed(parsePath(routeTo('agenda/surat/attend')), auth()->id)): ?>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#attendModal">
                             Hadiri
                         </button>
-                        <?php endif ?>
+                        <?php endif ?> */ ?>
 
                         <?php if(is_allowed(parsePath(routeTo('agenda/surat/disposisi')), auth()->id)): ?>
                         <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">
@@ -142,11 +143,11 @@
                 <?=csrf_field()?>
                 <div class="form-group mb-3">
                     <label class="mb-2 w-100">Pejabat Pelaksana</label>
-                    <?= \Core\Form::input('options-obj:ag_pejabat,id,jabatan', 'pejabat_id', ['class' => 'form-control select2insidemodal', 'placeholder' => 'Pilih Pejabat Pelaksana']) ?>
+                    <?= \Core\Form::input('options-obj:ag_pejabat,id,jabatan', 'pejabat[]', ['class' => 'form-control select2insidemodal', 'placeholder' => 'Pilih Pejabat Pelaksana', 'multiple' => 'multiple']) ?>
                 </div>
                 <div class="form-group mb-3">
                     <label class="mb-2 w-100">Pejabat Pendamping</label>
-                    <?= \Core\Form::input('options-obj:ag_pejabat,id,jabatan', 'pendamping[]', ['class' => 'form-control select2insidemodal', 'placeholder' => 'Pilih Pejabat Pendamping', 'multiple' => 'nultiple']) ?>
+                    <?= \Core\Form::input('options-obj:ag_pejabat,id,jabatan', 'pendamping[]', ['class' => 'form-control select2insidemodal', 'placeholder' => 'Pilih Pejabat Pendamping', 'multiple' => 'multiple']) ?>
                 </div>
                 <div class="form-group mb-3">
                     <label class="mb-2 w-100">Instruksi Disposisi</label>
