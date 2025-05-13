@@ -12,6 +12,7 @@
     <link rel="icon" type="image/x-icon" href="<?= getFavicon() ?>">
 
     <link href="<?= asset('theme/assets/css/dataTables.bootstrap5.min.css') ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
 
 
     <!-- Fonts -->
