@@ -683,3 +683,11 @@ function hasRole($user_id, $role)
 
     return in_array($role, $roles);
 }
+
+function lastRole($user_id)
+{
+    $roles = get_roles($user_id);
+    $roles = $roles ? array_values(array_column($roles, 'name')) : [];
+
+    return end($roles);
+}

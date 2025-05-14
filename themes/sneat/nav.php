@@ -36,12 +36,12 @@
                              <div class="d-flex">
                                  <div class="flex-shrink-0 me-3">
                                      <div class="avatar avatar-online">
-                                         <img src="<?=asset(auth()->profile->pic ?? 'assets/default/img/user-default.png')?>" alt class="w-px-40 h-auto rounded-circle" />
+                                         <img src="<?=asset(auth()->profile->pic ?? 'assets/default/img/user-default.png')?>" alt class="w-px-40 h-auto rounded-circle" style="width:40px !important;height:40px !important"/>
                                      </div>
                                  </div>
                                  <div class="flex-grow-1">
                                      <span class="fw-semibold d-block"><?=auth()->name?></span>
-                                     <small class="text-muted">Admin</small>
+                                     <small class="text-muted"><?= lastRole(auth()->id)?></small>
                                  </div>
                              </div>
                          </a>
