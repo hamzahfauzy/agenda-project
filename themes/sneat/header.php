@@ -10,8 +10,10 @@
 
     <!-- App favicon -->
     <link rel="icon" type="image/x-icon" href="<?= getFavicon() ?>">
-    <link rel="shortcut icon" href="<?= getFavicon() ?>" />
-    <link rel="apple-touch-icon" href="<?= getFavicon() ?>" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="<?= getFavicon() ?>">
+    <link rel="icon" type="image/png" href="<?= getFavicon() ?>">
+    <meta name="theme-color" content="#0d47a1">
 
     <link href="<?= asset('theme/assets/css/dataTables.bootstrap5.min.css') ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">

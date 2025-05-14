@@ -20,8 +20,10 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="<?= getFavicon() ?>">
-    <link rel="shortcut icon" href="<?= getFavicon() ?>" />
-    <link rel="apple-touch-icon" href="<?= getFavicon() ?>" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="<?= getFavicon() ?>">
+    <link rel="icon" type="image/png" href="<?= getFavicon() ?>">
+    <meta name="theme-color" content="#0d47a1">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
