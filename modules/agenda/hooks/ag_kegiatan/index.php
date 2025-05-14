@@ -40,7 +40,7 @@ $query = "SELECT
             FROM $this->table 
             LEFT JOIN ag_pendamping_kegiatan ON ag_pendamping_kegiatan.kegiatan_id = $this->table.id 
             LEFT JOIN ag_pejabat pejabat ON ag_pendamping_kegiatan.pejabat_id = pejabat.id AND ag_pendamping_kegiatan.record_type = 'PENDAMPING'
-            LEFT JOIN ag_pejabat pelaksana ON ag_pendamping_kegiatan.pejabat_id = pejabat.id  AND ag_pendamping_kegiatan.record_type = 'PELAKSANA'
+            LEFT JOIN ag_pejabat pelaksana ON ag_pendamping_kegiatan.pejabat_id = pelaksana.id  AND ag_pendamping_kegiatan.record_type = 'PELAKSANA'
             $where
             GROUP BY $this->table.id 
             $having ";

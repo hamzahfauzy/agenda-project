@@ -11,6 +11,7 @@ if(hasRole(auth()->id, 'Ajudan'))
     $userIds[] = $db->exec('single');
 }
 
+$_POST['kegiatan']['surat_id'] = $data->id;
 $db->insert('ag_kegiatan', $_POST['kegiatan']);
 
 forwardFlow($data, $userIds);

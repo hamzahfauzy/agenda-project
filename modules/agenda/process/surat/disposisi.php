@@ -31,7 +31,14 @@ if(hasRole(auth()->id, 'Ajudan'))
     }
 }
 
-$kegiatan = $db->insert('ag_kegiatan', $data);
+// $kegiatan = $db->insert('ag_kegiatan', $data);
+$db->update('ag_kegiatan', $data, [
+    'surat_id' => $surat->id
+]);
+
+$kegiatan = $db->single('ag_kegiatan', [
+    'surat_id' => $surat->id
+]);
 
 $flow = $db->single('ag_surat_flow', [
     'surat_id' => $_GET['id'],

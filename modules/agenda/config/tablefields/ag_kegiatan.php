@@ -15,7 +15,7 @@ return [
     ],
     'instruksi' => [
         'label' => 'Instruksi Disposisi',
-        'type' => 'checkbox:Dihadiri Bupati|Dihadiri Wakil Bupati|Dihadiri Sekdakab|Wakilkan/Hadiri|Untuk ditindaklanjuti|Untuk.dilaksanakan',
+        'type' => 'checkbox:Dihadiri Bupati|Dihadiri Wakil Bupati|Dihadiri Sekdakab|Wakilkan/Hadiri|Untuk ditindaklanjuti|Untuk dilaksanakan',
     ],
     'deskripsi' => [
         'label' => 'Instruksi Tambahan',

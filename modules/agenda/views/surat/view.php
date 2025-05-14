@@ -151,7 +151,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label class="mb-2 w-100">Instruksi Disposisi</label>
-                    <?= \Core\Form::input('checkbox:Dihadiri Bupati|Dihadiri Wakil Bupati|Dihadiri Sekdakab|Wakilkan/Hadiri|Untuk ditindaklanjuti|Untuk.dilaksanakan', 'instruksi[]', ['class' => 'form-control select2insidemodal']) ?>
+                    <?= \Core\Form::input('checkbox:Dihadiri Bupati|Dihadiri Wakil Bupati|Dihadiri Sekdakab|Wakilkan/Hadiri|Untuk ditindaklanjuti|Untuk.dilaksanakan', 'instruksi', ['class' => 'form-control select2insidemodal']) ?>
                 </div>
                 <div class="form-group mb-3">
                     <label class="mb-2 w-100">Instruksi Tambahan</label>
