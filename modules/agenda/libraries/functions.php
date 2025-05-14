@@ -49,6 +49,12 @@ function forwardFlow($surat, $userIds = [])
             'content-type: application/x-www-form-urlencoded'
         ]);
     }
+
+    $db->update('ag_surat', [
+        'record_status' => 'DITERUSKAN'
+    ], [
+        'id' => $surat->id
+    ]);
 }
 
 function forwardReceivers($surat)

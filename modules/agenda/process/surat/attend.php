@@ -7,6 +7,13 @@ $surat = $db->single('ag_surat', [
     'id' => $_GET['id']
 ]);
 
+$db->update('ag_surat', [
+    'record_status' => 'DIHADIRI'
+], [
+    'id' => $surat->id
+]);
+
+
 $pejabat = $db->single('ag_pejabat', [
     'user_id' => auth()->id
 ]);

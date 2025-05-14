@@ -7,6 +7,12 @@ $surat = $db->single('ag_surat', [
     'id' => $_GET['id']
 ]);
 
+$db->update('ag_surat', [
+    'record_status' => 'DISPOSISI'
+], [
+    'id' => $surat->id
+]);
+
 $data = $_POST;
 $data['nama'] = $surat->perihal;
 $data['created_by'] = auth()->id;
@@ -63,7 +69,7 @@ foreach($_POST['pejabat'] as $pejabat)
         'nama_pejabat' => $pejabat->nama,
         'created_at' => date('Y-m-d H:i:s')
     ];
-    
+
 }
 
 $db->update('ag_surat_flow', [

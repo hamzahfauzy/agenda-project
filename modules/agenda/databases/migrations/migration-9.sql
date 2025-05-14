@@ -1,0 +1,1 @@
+ALTER TABLE ag_surat ADD COLUMN record_status VARCHAR DEFAULT 'DITERIMA';
