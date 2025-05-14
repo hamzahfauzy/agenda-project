@@ -13,7 +13,7 @@
             <div class="card-header d-flex flex-grow-1 align-items-center">
                 <p class="h4 m-0">Detail Surat</p>
                 <div class="right-button ms-auto">
-                    <?php if(!$data->take_action && $data->record_status == 'DITERUSKAN'): ?>
+                    <?php if(!$data->take_action && in_array($data->record_status,['DITERUSKAN','DITERIMA'])): ?>
                         <?php if(is_allowed(parsePath(routeTo('agenda/surat/forward')), auth()->id)): ?>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#forwardModal">
                             Teruskan
