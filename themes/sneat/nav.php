@@ -27,7 +27,7 @@
              <li class="nav-item navbar-dropdown dropdown-user dropdown">
                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                      <div class="avatar avatar-online">
-                         <img src="<?=asset(auth()->profile->pic ?? 'assets/default/img/user-default.png')?>" alt class="w-px-40 h-auto rounded-circle" style="width:40px !important;height:40px !important" />
+                         <img src="<?=asset(auth()->profile->pic ?? 'assets/default/img/user-default.png')?>" alt class="w-px-40 h-auto rounded-circle" style="width:40px !important;height:40px !important;object-fit:cover" />
                      </div>
                  </a>
                  <ul class="dropdown-menu dropdown-menu-end">
@@ -36,7 +36,7 @@
                              <div class="d-flex">
                                  <div class="flex-shrink-0 me-3">
                                      <div class="avatar avatar-online">
-                                         <img src="<?=asset(auth()->profile->pic ?? 'assets/default/img/user-default.png')?>" alt class="w-px-40 h-auto rounded-circle" style="width:40px !important;height:40px !important"/>
+                                         <img src="<?=asset(auth()->profile->pic ?? 'assets/default/img/user-default.png')?>" alt class="w-px-40 h-auto rounded-circle" style="width:40px !important;height:40px !important;object-fit:cover"/>
                                      </div>
                                  </div>
                                  <div class="flex-grow-1">
