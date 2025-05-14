@@ -14,12 +14,14 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-      <title><?= __('auth.label.login') ?> - <?= getSetting('application_name') ?></title>
+      <title>e-Agenda - <?= __('auth.label.login') ?></title>
 
     <meta name="description" content="<?= getSetting('application_name') ?>" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?= getFavicon() ?>" />
+    <link rel="icon" type="image/x-icon" href="<?= getFavicon() ?>">
+    <link rel="shortcut icon" href="<?= getFavicon() ?>" />
+    <link rel="apple-touch-icon" href="<?= getFavicon() ?>" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
