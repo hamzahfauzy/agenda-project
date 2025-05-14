@@ -118,7 +118,10 @@
                                     $supportText = $log->status == 'Dihadiri' ? 'Oleh' : 'ke';
                             ?>
                             <tr>
-                                <td>[<?= date(app('datetime_format'), strtotime($log->created_at)) ?>] <?= $log->status?> <?=$supportText?> <?=$log->jabatan?></td>
+                                <td>
+                                    [<?= date(app('datetime_format'), strtotime($log->created_at)) ?>] 
+                                    <span class="fw-bold"><?= $log->status?> <?=$supportText?> <?=$log->jabatan?></span>
+                                </td>
                             </tr>
                             <?php endforeach ?>
                             <?php endforeach ?>
