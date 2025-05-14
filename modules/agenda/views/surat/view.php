@@ -120,7 +120,7 @@
                             <tr>
                                 <td>
                                     [<?= date(app('datetime_format'), strtotime($log->created_at)) ?>] 
-                                    <span class="fw-bold"><?= $log->status?> <?=$supportText?> <?=$log->jabatan?></span>
+                                    <span class="fw-bold text-uppercase"><?= $log->status?> <?=$supportText?> <?=$log->jabatan?></span>
                                 </td>
                             </tr>
                             <?php endforeach ?>
