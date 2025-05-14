@@ -8,12 +8,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "/storage/1747212892-favicon-agenda.png",
+      "src": "/assets/agenda/img/agenda-favicon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/storage/1747212892-favicon-agenda.png",
+      "src": "/assets/agenda/img/agenda-favicon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
