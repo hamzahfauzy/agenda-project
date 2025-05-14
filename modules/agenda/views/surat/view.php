@@ -20,12 +20,11 @@
                         </button>
                         <?php endif ?>
                         
-                        <?php /*
                         <?php if(is_allowed(parsePath(routeTo('agenda/surat/attend')), auth()->id)): ?>
                         <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#attendModal">
                             Hadiri
                         </button>
-                        <?php endif ?> */ ?>
+                        <?php endif ?>
 
                         <?php if(is_allowed(parsePath(routeTo('agenda/surat/disposisi')), auth()->id)): ?>
                         <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#itemModal">

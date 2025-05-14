@@ -35,7 +35,7 @@ $data->take_action = $db->exists('ag_surat_flow', [
 
 if(hasRole(auth()->id, 'Ajudan'))
 {
-    $db->query = "SELECT * FROM ag_kegiatan WHERE surat_id = $data->id AND instruksi IS NULL";
+    $db->query = "SELECT * FROM ag_kegiatan WHERE surat_id = $data->id AND instruksi IS NOT NULL";
     $data->take_action = $db->exec('exists');
 }
 
