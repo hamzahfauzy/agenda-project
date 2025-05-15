@@ -19,7 +19,8 @@ class Bootstrap
             ini_set('session.save_path', Utility::parentPath() . $session_path);
         }
         date_default_timezone_set(app('timezone', 'Asia/Jakarta'));
-
+        
+        session_set_cookie_params(0);
         session_start();
 
         loadModuleFunctions();
