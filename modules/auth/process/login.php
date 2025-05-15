@@ -21,7 +21,7 @@ if(Request::isMethod('post'))
     {
         $token = bin2hex(random_bytes(32));
 
-        $db->update('useres', [
+        $db->update('users', [
             'remember_token' => $token
         ], [
             'id' => $user->id
