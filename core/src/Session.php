@@ -48,6 +48,7 @@ class Session
 
     static function destroy()
     {
+        setcookie('remember_token', '', time() - 3600, "/");
         session_destroy();
     }
 
