@@ -13,7 +13,11 @@ class Bootstrap
 
         // main configuration
         ini_set('display_errors', app('debug', true));
-        ini_set('session.save_path', Utility::parentPath() . app('session_path', 'storage/session') );
+        $session_path = app('session_path', '');
+        if($session_path)
+        {
+            ini_set('session.save_path', Utility::parentPath() . $session_path);
+        }
         date_default_timezone_set(app('timezone', 'Asia/Jakarta'));
 
         session_start();
