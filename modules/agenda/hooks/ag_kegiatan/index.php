@@ -4,11 +4,11 @@ $having = "";
 
 $user = auth();
 
-if(!in_array(get_role($user->id)->name,['Admin','Super Admin']) && !hasRole($user->id, 'Ajudan'))
-{
-    $pejabat = $this->db->single('ag_pejabat', ['user_id' => $user->id]);
-    $where .= (empty($where) ? ' WHERE ' : ' AND ') . "($pejabat->id IN (SELECT ag_pendamping_kegiatan.pejabat_id FROM ag_pendamping_kegiatan WHERE ag_pendamping_kegiatan.kegiatan_id = ag_kegiatan.id) OR ag_kegiatan.pejabat_id = $pejabat->id OR ag_kegiatan.created_by = $user->id)";
-}
+// if(!in_array(get_role($user->id)->name,['Admin','Super Admin']) && !hasRole($user->id, 'Ajudan'))
+// {
+//     $pejabat = $this->db->single('ag_pejabat', ['user_id' => $user->id]);
+//     $where .= (empty($where) ? ' WHERE ' : ' AND ') . "($pejabat->id IN (SELECT ag_pendamping_kegiatan.pejabat_id FROM ag_pendamping_kegiatan WHERE ag_pendamping_kegiatan.kegiatan_id = ag_kegiatan.id) OR ag_kegiatan.pejabat_id = $pejabat->id OR ag_kegiatan.created_by = $user->id)";
+// }
 
 if($filter)
 {
