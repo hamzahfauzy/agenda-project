@@ -24,7 +24,7 @@ class Form
         {
             $types = explode(':',$type);
             $options = $types[1];
-            $vals = explode(',',$value);
+            $vals = explode(',',$vals);
             
             if(substr($type, 9,3) == 'obj')
             {
