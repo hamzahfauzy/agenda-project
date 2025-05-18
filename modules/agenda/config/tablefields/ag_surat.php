@@ -9,6 +9,10 @@ return [
         'label' => 'Tanggal Surat',
         'type' => 'date'
     ],
+    'tanggal_kegiatan' => [
+        'label' => 'Tanggal dan Waktu Kegiatan',
+        'type' => 'text'
+    ],
     'perihal' => [
         'label' => 'Perihal',
         'type' => 'text'

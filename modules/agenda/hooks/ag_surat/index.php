@@ -26,12 +26,23 @@ $this->db->query = "SELECT * FROM $this->table $where ";
 
 if(!in_array(get_role($user->id)->name, ['Admin','Super Admin']) && !hasRole($user->id, 'Ajudan'))
 {
-    $this->db->query = "SELECT $this->table.* FROM $this->table JOIN ag_surat_flow ON ag_surat_flow.surat_id = $this->table.id AND ag_surat_flow.user_id = $user->id $where ";
+    $this->db->query = "SELECT 
+                            $this->table.*,
+                            ag_kegiatan.tanggal tanggal_kegiatan
+                        FROM $this->table 
+                        LEFT JOIN ag_kegiatan ON ag_kegiatan.surat_id = $this->table.id
+                        JOIN ag_surat_flow ON 
+                            ag_surat_flow.surat_id = $this->table.id AND 
+                            ag_surat_flow.user_id = $user->id $where ";
 }
 
 $total = $this->db->exec('exists');
 
-$this->db->query .= "ORDER BY ".$col_order." ".$order[0]['dir']." LIMIT $start,$length";
+$this->db->query .= "ORDER BY CASE 
+    WHEN ag_kegiatan.tanggal >= CURDATE() THEN 0
+    ELSE 1
+  END,
+  ABS(DATEDIFF(ag_kegiatan.tanggal, CURDATE())) LIMIT $start,$length";
 $data  = $this->db->exec('all');
 
 

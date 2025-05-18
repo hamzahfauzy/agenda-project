@@ -15,5 +15,7 @@ $fields['lokasi'] = [
     'type' => 'text'
 ];
 
+unset($fields['tanggal_kegiatan']);
+
 
 return $fields;
