@@ -23,7 +23,10 @@ return [
     ],
     'pelaksana' => [
         'label' => 'Pejabat Pelaksana',
-        'type' => 'text',
+        'type' => 'options-obj:ag_pejabat,id,jabatan',
+        'attr' => [
+            'multiple' => 'multiple'
+        ]
     ],
     'pendamping' => [
         'label' => 'Pejabat Pendamping Kegiatan',
