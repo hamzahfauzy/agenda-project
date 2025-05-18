@@ -39,7 +39,7 @@ if(!in_array(get_role($user->id)->name, ['Admin','Super Admin']) && !hasRole($us
 $total = $this->db->exec('exists');
 
 $this->db->query .= "ORDER BY CASE 
-    WHEN tanggal_kegiatan >= CURDATE() THEN 0
+    WHEN ag_kegiatan.tanggal >= CURDATE() THEN 0
     ELSE 1
   END,
   ABS(DATEDIFF(ag_kegiatan.tanggal, CURDATE())) LIMIT $start,$length";
