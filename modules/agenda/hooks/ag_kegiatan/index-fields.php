@@ -1,6 +1,6 @@
 <?php
 
 $fields['pendamping']['type'] = 'text';
-$fields['pejabat']['type'] = 'text';
+$fields['pelaksana']['type'] = 'text';
 
 return $fields;
