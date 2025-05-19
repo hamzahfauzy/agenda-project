@@ -13,9 +13,13 @@ if(empty($auth) && isset($_COOKIE['remember_token']))
         'remember_token' => $_COOKIE['remember_token']
     ]);
 
-    Session::set(['user_id'=>$user->id]);
+    if($user)
+    {
+        Session::set(['user_id'=>$user->id]);
+    
+        $auth = auth();
+    }
 
-    $auth = auth();
 }
 
 if(empty($auth) && !in_array($route, $publicRoutes))
