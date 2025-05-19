@@ -30,7 +30,7 @@ Page::setBreadcrumbs([
     ]
 ]);
 
-Page::pushFoot("<script src='".asset('assets/crud/js/crud.js')."'></script>");
+Page::pushFoot("<script src='".asset('assets/crud/js/crud.js?v=1.1')."'></script>");
 
 Page::pushHook('index');
 
