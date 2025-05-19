@@ -33,6 +33,7 @@ $query = "SELECT
                 $this->table.pejabat_id,
                 GROUP_CONCAT(pejabat.jabatan SEPARATOR ', ') AS pendamping,
                 GROUP_CONCAT(pelaksana.jabatan SEPARATOR ', ') AS pelaksana,
+                CASE WHEN ag_kegiatan.tanggal >= NOW() THEN 'Kegiatan Akan Datang' ELSE 'Kegiatan Telah Selesai' END status_kegiatan,
                 $this->table.created_at,
                 $this->table.updated_at,
                 $this->table.created_by,

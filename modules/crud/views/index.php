@@ -6,6 +6,14 @@ table td img {
 table.table td, table.table th {
     white-space:pre-wrap;
 }
+table.table tr.upcomming td {
+    background-color:#FFF;
+}
+
+table.table tr.overdue td {
+    background-color:rgb(91, 196, 123);
+    color: #FFF;
+}
 </style>
 <div class="card">
     <div class="card-header d-flex flex-grow-1 align-items-center">
@@ -28,7 +36,7 @@ table.table td, table.table th {
         <div class="alert alert-danger"><?= $error_msg ?></div>
         <?php endif ?>
         <div class="table-responsive">
-            <table class="table table-striped datatable-crud" style="width:100%">
+            <table class="table datatable-crud" style="width:100%">
                 <thead>
                     <tr>
                         <th width="20px">#</th>

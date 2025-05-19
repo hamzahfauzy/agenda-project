@@ -23,13 +23,15 @@ if(hasRole($user->id, 'Ajudan'))
 $where = $where ." ". $having;
 
 $this->db->query = "SELECT $this->table.*,
+                            CASE WHEN ag_kegiatan.tanggal >= NOW() THEN 'Kegiatan Akan Datang' ELSE 'Kegiatan Telah Selesai' END status_kegiatan,
                             ag_kegiatan.tanggal tanggal_kegiatan FROM $this->table LEFT JOIN ag_kegiatan ON ag_kegiatan.surat_id = $this->table.id $where ";
 
 if(!in_array(get_role($user->id)->name, ['Admin','Super Admin']) && !hasRole($user->id, 'Ajudan'))
 {
     $this->db->query = "SELECT 
                             $this->table.*,
-                            ag_kegiatan.tanggal tanggal_kegiatan
+                            ag_kegiatan.tanggal tanggal_kegiatan,
+                            CASE WHEN ag_kegiatan.tanggal >= NOW() THEN 'Kegiatan Akan Datang' ELSE 'Kegiatan Telah Selesai' END status_kegiatan
                         FROM $this->table 
                         LEFT JOIN ag_kegiatan ON ag_kegiatan.surat_id = $this->table.id
                         JOIN ag_surat_flow ON 

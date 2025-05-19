@@ -7,6 +7,17 @@ $('.datatable-crud').dataTable({
         return: true
     },
     serverSide: true,
+    "createdRow": function ( row, data, index ) {
+        // $(row).addClass(data[5]);
+        if(data[12] && ['Kegiatan Akan Datang', 'Kegiatan Telah Selesai'].includes(data[12])){
+          const classList = {
+            'Kegiatan Akan Datang': 'upcomming',
+            'Kegiatan Telah Selesai': 'overdue'
+          }
+          
+          $(row).addClass(classList[data[12]]);
+        }
+      },
     ajax: location.href,
     aLengthMenu: [
         [25, 50, 100, 200],
