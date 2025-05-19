@@ -11,7 +11,7 @@ return [
     ],
     'tanggal_kegiatan' => [
         'label' => 'Tanggal dan Waktu Kegiatan',
-        'type' => 'text'
+        'type' => 'datetime-local'
     ],
     'perihal' => [
         'label' => 'Perihal',
