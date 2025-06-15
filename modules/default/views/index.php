@@ -98,7 +98,7 @@ function submitPost()
         {
             var file = input.files[i];
             var fileSize = file.size/1024/1024
-            if(fileSize > 0.6)
+            if(fileSize > 1)
             {
                 isValidated = false
                 break
@@ -107,7 +107,7 @@ function submitPost()
 
         if(!isValidated)
         {
-            alert("File tidak boleh lebih dari 500kb")
+            alert("File tidak boleh lebih dari 1Mb")
             return
         }
     }
