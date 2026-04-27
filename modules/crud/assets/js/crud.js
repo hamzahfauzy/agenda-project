@@ -1,6 +1,11 @@
-$('.datatable-crud').dataTable({
+$('.datatable-crud').on('draw.dt', function (e, settings, json, xhr) {
+    // document.querySelector('.datatable-crud').parentNode.style.padding = 0
+    document.querySelector('.datatable-crud').parentNode.classList.add('table-responsive')
+    document.querySelector('.datatable-crud').parentNode.parentNode.style.marginTop = '10px'
+    document.querySelector('.datatable-crud').parentNode.parentNode.style.marginBottom = '20px'
+}).dataTable({
     // stateSave:true,
-    responsive: true,
+    // responsive: true,
     pagingType: 'full_numbers_no_ellipses',
     processing: true,
     search: {

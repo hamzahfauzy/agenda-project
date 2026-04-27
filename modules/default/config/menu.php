@@ -3,19 +3,19 @@
 return [
     [
         'label' => 'default.menu.users',
-        'icon'  => 'fa-fw fa-lg me-2 fa-solid fa-users',
+        'icon'  => 'ph ph-users',
         'route' => routeTo('crud/index',['table'=>'users']),
         'activeState' => 'default.users'
     ],
     [
         'label' => 'default.menu.roles',
-        'icon'  => 'fa-fw fa-lg me-2 fa-solid fa-cubes',
+        'icon'  => 'ph ph-toolbox',
         'route' => routeTo('crud/index',['table'=>'roles']),
         'activeState' => 'default.roles'
     ],
     [
         'label' => 'default.menu.settings',
-        'icon'  => 'fa-fw fa-lg me-2 fa-solid fa-cog',
+        'icon'  => 'ph ph-gear',
         'route' => routeTo('default/settings/index'),
         'activeState' => 'default.settings'
     ],

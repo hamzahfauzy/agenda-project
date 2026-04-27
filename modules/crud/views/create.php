@@ -1,7 +1,8 @@
 <?php get_header() ?>
-<div class="card">
-    <div class="card-header d-flex flex-grow-1 align-items-center">
-        <p class="h4 m-0"><?= __('crud.label.create') ?> <?php get_title() ?></p>
+<div class="card border border-slate rounded-3 shadow-sm-custom mb-4 overflow-hidden">
+    <div class="card-header bg-white border-bottom border-slate p-4 d-flex flex-grow-1 align-items-center">
+        <h3 class="fs-5 fw-bold text-slate-800 mb-0"><?= __('crud.label.create') ?> <?php get_title() ?></h3>
+
         <div class="right-button ms-auto">
             <a href="<?= crudRoute('crud/index', $tableName) ?>" class="btn btn-warning btn-sm">
                 <?= __('crud.label.back') ?>

@@ -10,14 +10,19 @@ table.table tr.upcomming td {
     background-color:#FFF;
 }
 
-table.table tr.overdue td {
-    background-color:rgb(91, 196, 123);
-    color: #FFF;
+table.table tr td {
+    white-space: nowrap;
 }
+
+/* table.table tr.overdue td { */
+    /* background-color:rgba(162, 230, 159, 0.85); */
+    /* color: #FFF; */
+/* } */
 </style>
-<div class="card">
-    <div class="card-header d-flex flex-grow-1 align-items-center">
-        <p class="h4 m-0"><?php get_title() ?></p>
+<div class="card border border-slate rounded-3 shadow-sm-custom mb-4 overflow-hidden">
+    <div class="card-header bg-white border-bottom border-slate p-4 d-flex flex-grow-1 align-items-center">
+        <h3 class="fs-5 fw-bold text-slate-800 mb-0"><?php get_title() ?></h3>
+
         <div class="right-button ms-auto">
             <?= $crudRepository->additionalButtonBeforeCreate() ?>
             <?php if(is_allowed(parsePath(routeTo('crud/create', ['table'=>$tableName])), auth()->id)): ?>
@@ -28,6 +33,7 @@ table.table tr.overdue td {
             <?= $crudRepository->additionalButtonAfterCreate() ?>
         </div>
     </div>
+
     <div class="card-body">
         <?php if ($success_msg) : ?>
         <div class="alert alert-success"><?= $success_msg ?></div>
@@ -35,8 +41,8 @@ table.table tr.overdue td {
         <?php if ($error_msg) : ?>
         <div class="alert alert-danger"><?= $error_msg ?></div>
         <?php endif ?>
-        <div class="table-responsive">
-            <table class="table datatable-crud" style="width:100%">
+        <div>
+            <table class="table datatable-crud table-hover text-nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th width="20px">#</th>
@@ -54,7 +60,7 @@ table.table tr.overdue td {
                             }
                             $label = $label == '_action_button' ? __('crud.label.action_button') : _ucwords($label);
                         ?>
-                        <th><?=$label?></th>
+                        <th class="text-nowrap"><?=$label?></th>
                         <?php endforeach ?>
                         <?php if(!$isActionButton): ?>
                         <th class="text-right">

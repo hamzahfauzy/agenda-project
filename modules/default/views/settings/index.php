@@ -1,8 +1,9 @@
 <?php get_header() ?>
-<div class="card">
-    <div class="card-header d-flex flex-grow-1 align-items-center">
-        <p class="h4 m-0"><?= __('default.label.settings') ?></p>
+<div class="card border border-slate rounded-3 shadow-sm-custom mb-4 overflow-hidden">
+    <div class="card-header bg-white border-bottom border-slate p-4 d-flex flex-grow-1 align-items-center">
+        <h3 class="fs-5 fw-bold text-slate-800 mb-0"><?= __('default.label.settings') ?></h3>
     </div>
+    
     <div class="card-body">
         <?php if ($success_msg) : ?>
         <div class="alert alert-success"><?= $success_msg ?></div>
